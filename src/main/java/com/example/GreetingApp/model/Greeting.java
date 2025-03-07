@@ -2,6 +2,7 @@ package com.example.GreetingApp.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Entity
@@ -12,6 +13,7 @@ public class Greeting {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     private String message;
 
     public Greeting() {}
@@ -20,7 +22,4 @@ public class Greeting {
         this.message = message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
