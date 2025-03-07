@@ -1,15 +1,17 @@
 package com.example.GreetingApp.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 
-@Setter
 @Getter
-@JsonInclude(JsonInclude.Include.NON_NULL) // Exclude null fields in JSON response
+@Entity
+@Table(name = "greetings")
 public class Greeting {
-    private String firstName;
-    private String lastName;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String message;
 
     public Greeting() {}
@@ -18,10 +20,7 @@ public class Greeting {
         this.message = message;
     }
 
-    public Greeting(String firstName, String lastName, String message) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public void setMessage(String message) {
         this.message = message;
     }
-
 }
