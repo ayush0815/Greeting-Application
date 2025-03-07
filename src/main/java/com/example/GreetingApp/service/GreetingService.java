@@ -1,22 +1,19 @@
 package com.example.GreetingApp.service;
 
-
 import com.example.GreetingApp.model.Greeting;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GreetingService {
 
-    public Greeting getGreeting() {
-        return new Greeting("Namaste User!!");
-    }
+    public Greeting getGreeting(String firstName, String lastName) {
+        if ((firstName == null || firstName.isBlank()) && (lastName == null || lastName.isBlank())) {
+            return new Greeting("Namaste Usr!!");
+        }
 
-    public Greeting postGreeting(Greeting greeting) {
-        return new Greeting("Received message: " + greeting.getMessage());
-    }
+        String fullName = (firstName != null ? firstName : "") +
+                (lastName != null ? " " + lastName : "");
 
-
-    public Greeting putGreeting(Greeting greeting) {
-        return new Greeting("Received message: " + greeting.getMessage());
+        return new Greeting("Namaste " + fullName.trim());
     }
 }
